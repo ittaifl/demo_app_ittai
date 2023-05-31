@@ -11,6 +11,7 @@
 /backend/audio_16bit.wav
 /backend/deom-for-interview-b0a1bb996236.json
 /backend/node_modules
+/backend/__pycache__/
 
 /frontend/node_modules
 # testing
@@ -26,6 +27,15 @@
 .env.test.local
 .env.production.local
 
+# Ignore Python virtual environments.
+venv/
+
+# Ignore PyCharm IDE settings.
+.idea/
+
+# Ignore Python byte-compiled files.
+
+__pycache__/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
