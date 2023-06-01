@@ -13,4 +13,4 @@ services:
     ports:
       - 8000:8000
     environment:
-      - GOOGLE_APPLICATION_CREDENTIALS=/app/deom-for-interview-b0a1bb996236.json
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/google-credentials.json

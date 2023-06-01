@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from speech_to_text import analyze_audio
 from pydub import AudioSegment
 import os
-#os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'deom-for-interview-b0a1bb996236.json'
+
 app = FastAPI()
 
 origins = [

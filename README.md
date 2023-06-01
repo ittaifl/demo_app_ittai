@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# My Speech-To-Text App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an audio processing application that listens to uploaded audio files and reacts when it detects a specific word in the audio. The frontend is built with React and the backend is developed with FastAPI, a Python web framework, along with Google's Speech-to-Text service.
 
-## Available Scripts
+The application listens to audio files and when it detects the word "לחזור", it responds with a signal. This signal is currently implemented as a boolean response from the backend, but can be modified as per your requirements.
 
-In the project directory, you can run:
+## Structure
 
-### `npm start`
+The application is divided into two main parts:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `frontend/`: Contains the React application that allows users to upload audio files.
+- `backend/`: Houses the FastAPI server, which accepts the audio files, converts them into a suitable format, sends them to the Google Speech-to-Text API, and returns the results.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup
 
-### `npm test`
+Before starting, make sure you have [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) installed on your machine.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository:**
 
-### `npm run build`
+    ```bash
+    git clone https://github.com/ittaifl/demo-app.git
+    cd my-app
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Set up your Google application credentials:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    In order to use Google's Speech-to-Text service, you need to set up your Google application credentials. Follow these steps to do so:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    - Create a project in the [Google Cloud Console](https://console.cloud.google.com/).
+    - Enable the [Speech-to-Text API](https://cloud.google.com/speech-to-text/docs/quickstart-client-libraries) for your project.
+    - Generate a service account key for your project. This will give you a JSON file. Rename this file to `google-credentials.json`.
+    - Place the `google-credentials.json` file in the `backend/` directory.
 
-### `npm run eject`
+    The backend service needs this to authenticate with Google's Speech-to-Text service.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Build and start the services:**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    Open a terminal, navigate to the project directory, and run:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```bash
+    docker-compose up --build
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    This will start the frontend service at `http://localhost:3000` and the backend service at `http://localhost:8000`.
 
-## Learn More
+## Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To use the application, navigate to `http://localhost:3000` in your web browser. You'll be presented with a simple interface that allows you to upload an audio file. Once you've selected a file, the frontend will send it to the backend for processing. If the word "לחזור" is detected in the audio, the backend will return a positive response.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+If you encounter any problems during the setup or usage of this application, feel free to reach out at ittaifl@gmail.com :)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
